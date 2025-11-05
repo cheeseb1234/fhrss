@@ -39,14 +39,11 @@ jobs:
       - name: Ensure feed exists (placeholder if scrape not ready yet)
         run: |
           if [ ! -f public/funhalf.xml ]; then
-            cat > public/funhalf.xml <<'XML'
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel>
-  <title>Majority Report – Fun Half</title>
-  <link>https://www.youtube.com/@samSeder</link>
-  <description>Daily Fun Half links from MR Live</description>
-</channel></rss>
-XML
+            echo '<rss version="2.0"><channel>' > public/funhalf.xml
+            echo '  <title>Majority Report – Fun Half</title>' >> public/funhalf.xml
+            echo '  <link>https://www.youtube.com/@samSeder</link>' >> public/funhalf.xml
+            echo '  <description>Daily Fun Half links from MR Live</description>' >> public/funhalf.xml
+            echo '</channel></rss>' >> public/funhalf.xml
           fi
 
       - name: Upload artifact
