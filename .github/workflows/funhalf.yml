@@ -16,16 +16,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Prepare output dir
+        run: mkdir -p public
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
       - name: Generate RSS
+        run: python scripts/app.py
+
+      - name: Ensure feed exists (placeholder if scrape not ready yet)
         run: |
-          python scripts/app.py
+          if [ ! -f public/funhalf.xml ]; then
+            cat > public/funhalf.xml <<'XML'
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+  <title>Majority Report – Fun Half</title>
+  <link>https://www.youtube.com/@samSeder</link>
+  <description>Daily Fun Half links from MR Live</description>
+</channel></rss>
+XML
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
