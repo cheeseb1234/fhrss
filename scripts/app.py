@@ -10,13 +10,13 @@ from yt_dlp.utils import DownloadError, ExtractorError
 # ----------- Config -----------
 TZ = "America/Detroit"
 FEED_TITLE = "Majority Report – Fun Half"
-FEED_LINK = "https://www.youtube.com/@samSeder"
+FEED_LINK = "https://www.youtube.com/@themajorityreport"
 FEED_DESCRIPTION = "Daily Fun Half links from MR Live"
 FEED_URL = "https://cheeseb1234.github.io/fhrss/funhalf.xml"
 OUTPUT_DIR = "public"
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, "funhalf.xml")
 
-CHANNEL_HANDLE = "@samSeder"  # If the MR handle changes, update here
+CHANNEL_HANDLE = "@themajorityreport"  # If the MR handle changes, update here
 
 # Prefer streams (past lives), then live landing, then videos (legacy)
 LIVE_SOURCES = [
@@ -264,3 +264,4 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
