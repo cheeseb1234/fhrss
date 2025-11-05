@@ -177,6 +177,10 @@ def append_item_to_feed(path, title, link, pub_dt_et):
 def main():
     now = now_et()
     target = now if is_weekday(now) else previous_weekday(now)
+
+    # Always ensure the output dir and feed file exist so Pages can publish
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    ensure_feed_exists(OUTPUT_PATH)
     entries = list_recent_live_entries()
     chosen = pick_target_stream(entries, target)
     if not chosen:
@@ -204,4 +208,5 @@ def main():
     return 0
 
 if __name__ == "__main__":
+
     raise SystemExit(main())
