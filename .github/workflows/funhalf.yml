@@ -41,7 +41,7 @@ jobs:
           if [ ! -f public/funhalf.xml ]; then
             echo '<rss version="2.0"><channel>' > public/funhalf.xml
             echo '  <title>Majority Report – Fun Half</title>' >> public/funhalf.xml
-            echo '  <link>https://www.youtube.com/@samSeder</link>' >> public/funhalf.xml
+            echo '  <link>https://www.youtube.com/@themajorityreport</link>' >> public/funhalf.xml
             echo '  <description>Daily Fun Half links from MR Live</description>' >> public/funhalf.xml
             echo '</channel></rss>' >> public/funhalf.xml
           fi
